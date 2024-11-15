@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
 
-function App() {
+
+export default function App() {
+
+  const [objT,setObjT]=useState()
+  let obj = {
+    "name":"",
+    "age":"",
+    "group":""
+  };
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const name = e.target.name;
+    obj[name]=value
+    setObjT(obj)
+    console.log(obj);
+
+  };
+
+ 
+ 
+  
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>{objT?.name}</h1>
+      <form>
+        <input type="text" name="name" onChange={(e)=>handleChange(e)} placeholder="Name" />
+        <input type="text" name="age" onChange={(e)=>handleChange(e)} placeholder="Age" />
+        <input type="text" name="group" onChange={(e)=>handleChange(e)} placeholder="Group" />
+        
+      </form>
     </div>
   );
 }
-
-export default App;
